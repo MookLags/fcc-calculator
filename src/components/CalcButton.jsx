@@ -1,23 +1,30 @@
 import { useState } from 'react';
 
-const CalcButton = ({ buttonWidth, buttonHeight, bgColor, hoverBgColor, func, value, isRelative }) => {
+const CalcButton = ({ buttonWidth = "80px", buttonHeight = "65px", bgColor = "#4d4d4d", func, value, isRelative = "true" }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const calcButtonStyle = {
     display: "flex",
-    color: isHovered ? "black" : "white",
-    backgroundColor: isHovered ? bgColor : hoverBgColor,
+    alignItems: "center",
+    color: "white",
+    background: bgColor,
+    filter: isHovered ? "brightness(1.2)" : "brightness(1)",
     width: buttonWidth,
     height: buttonHeight,
-    position: isRelative ? "relative" : "absolute"
+    border: isHovered ? "1px solid gray" : "none",
+    zIndex: isHovered ? "3" : "0",
+    position: isRelative ? "relative" : "absolute",
+    cursor: isHovered ? "pointer" : "normal"
   }
 
   return (
     <button
       style={calcButtonStyle} 
       onClick={func}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {value}
+      <p style={{marginLeft: "auto", marginRight: "auto"}}>{value}</p>
     </button>
   )
 }

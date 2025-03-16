@@ -36,5 +36,4 @@ const Screen = ({ displayText, expressionText }) => {
   )
 }
 
-       {/* screen
-        Two divs, one #display and the other #expressionScreen. Props of text which will be held in state */}
+export default Screen;

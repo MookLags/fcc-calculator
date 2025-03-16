@@ -1,3 +1,5 @@
+import CalcButton from '../components/CalcButton';
+import Screen from '../components/Screen';
 import { useState } from 'react';
 
 const HomePage = () => {
@@ -7,14 +9,29 @@ const HomePage = () => {
   const [operatorSet, setOperatorSet] = useState(false);
   const [result, setResult] = useState("");
 
+  const calcStyle = {
+    display: "flex",
+    flexDirection: "column",
+    margin: "auto",
+    marginTop: "100px",
+    width: "334px",
+    height: "394px",
+    backgroundColor: "black",
+    border: "2px solid #47476b"
+  }
+
+  const sayHi = () => { console.log("hi") };
+
   return (
-    <div id="calculator">
-      Home Page
+    <div id="calculator" style={calcStyle}>
+      <Screen />
+      <div id="buttonContainer" style={{ display: "flex", flexDirection: "row", gap: "1px", marginLeft: "auto", marginRight: "auto"}}>
+        <CalcButton value="5" func={sayHi} />
+        <CalcButton value="5" func={sayHi} />
+        <CalcButton value="5" func={sayHi} />
+        <CalcButton value="5" func={sayHi} />
+      </div>
       {/*
-       THE PLAN
-       create component for 
-       create component for 
-       HomePage will house calculator
        Functions: 
        handleNums
         display numbers and decimal
