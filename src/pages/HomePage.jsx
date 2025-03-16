@@ -1,6 +1,6 @@
 import CalcButton from '../components/CalcButton';
 import Screen from '../components/Screen';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const HomePage = () => {
   const [currVal, setCurrVal] = useState("0");
@@ -8,6 +8,15 @@ const HomePage = () => {
   const [decimalSet, setDecimalSet] = useState("");
   const [operatorSet, setOperatorSet] = useState(false);
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "#c3c3d6";
+    document.body.style.margin = "0px";
+    return () => {
+      document.body.backgroundColor = "";
+      document.body.margin = "";
+    }
+  }, []);
 
   const calcStyle = {
     display: "flex",
@@ -30,21 +39,21 @@ const HomePage = () => {
     <div id="calculator" style={calcStyle}>
       <Screen />
       <div id="buttonContainer" style={{ display: "flex", flexDirection: "row", marginLeft: "auto", marginRight: "auto", flexWrap: "wrap"}}>
-        <CalcButton value="AC" buttonWidth="160px" func={sayHi} />
-        <CalcButton value="/" func={sayHi} />
-        <CalcButton value="*" func={sayHi} />
+        <CalcButton value="AC" bgColor="#ac3939" buttonWidth="160px" func={sayHi} />
+        <CalcButton value="/" bgColor="#666666" func={sayHi} />
+        <CalcButton value="*" bgColor="#666666" func={sayHi} />
         <CalcButton value="7" func={sayHi} />
         <CalcButton value="8" func={sayHi} />
         <CalcButton value="9" func={sayHi} />
-        <CalcButton value="-" func={sayHi} />
+        <CalcButton value="-" bgColor="#666666" func={sayHi} />
         <CalcButton value="4" func={sayHi} />
         <CalcButton value="5" func={sayHi} />
         <CalcButton value="6" func={sayHi} />
-        <CalcButton value="+" func={sayHi} />
+        <CalcButton value="+" bgColor="#666666" func={sayHi} />
         <CalcButton value="1" func={sayHi} />
         <CalcButton value="2" func={sayHi} />
         <CalcButton value="3" func={sayHi} />
-        <CalcButton value="=" buttonHeight="130px" isRelative={false} func={sayHi} />
+        <CalcButton value="=" bgColor="#004466" buttonHeight="130px" isRelative={false} func={sayHi} />
         <CalcButton value="0" buttonWidth="160px" func={sayHi} />
         <CalcButton value="." buttonWidth="79px" func={sayHi} />
       </div>
