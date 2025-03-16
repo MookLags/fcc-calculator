@@ -1,0 +1,11 @@
+For all the buttons, maybe I should create a component that I can just reuse. Or maybe separate components for numbers, equals, operators, and the decimal?
+If I make one CalcButton component, how would I proceed?
+Probably give it props of "buttonValue" and give it what appears on the button's surface. I could then use the button's buttonValue to parse expression's programmatically. Then I could give classNames to different categories of buttons so I can still define unique functions per category if I need to.
+I want to do two displays like in the demo. One display which shows the whole expression in progress and another that shows the current value. Have two useStates:
+currVal, setCurrVal. It updates along with any size number with or without a prefix of "-", but any time an operator is pressed, it resets to "".
+expression, setExpression. Every time currVal is reset to "", currVal is appended to expression. I need  another useStates to faciliate these ideas.
+expressionCompleted, setExpressionCompleted. With an inital state of false. When the "=" button is pressed, this will be set to true. When it's set to true, currVal will be set to the result of the expression. If a number is selected, both currVal and expression are reset to "".
+if currVal == 0, the "0" button is disabled.
+useState's to keep track of prefixed zeros and multiple decimal points:
+decimalInUse, setDecimalInUse (false) this becomes true if the "." button is pressed, and afterwards disables the button for until currVal is "0" or an operator
+Should I use a useState to keep track of operator use? Like add one operator to a useState initialized to an empty string and make sure that it never has a length of more than 1 unless the second one is a "-"? But how do I do that?
