@@ -1,4 +1,11 @@
+import { useState } from 'react';
+
 const HomePage = () => {
+  const [currVal, setCurrVal] = useState("0");
+  const [expression, setExpression] = useState("");
+  const [decimalSet, setDecimalSet] = useState("");
+  const [operatorSet, setOperatorSet] = useState(false);
+  const [result, setResult] = useState("");
   return (
     <div>
       Home Page
@@ -22,13 +29,6 @@ const HomePage = () => {
         if pressed, result = eval(expression), append `=${result}` to expressionDisplay, and setCurrVal(result)
        handleClear
         setCurrval("0") setExpression("")
-       States:
-       currVal, setCurrVal("0")
-       expression, setExpression("")
-       operatorSet, setOperatorSet(false)
-       result, setResult("")
-       decimalPlaced, setDecimalPlaced(false)
-       Components:
       */}
     </div>
   )
