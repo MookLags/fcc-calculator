@@ -37,7 +37,7 @@ const HomePage = () => {
 
   return (
     <div id="calculator" style={calcStyle}>
-      <Screen />
+      <Screen displayText="Hi mom!" expressionText="Hi mom!" />
       <div id="buttonContainer" style={{ display: "flex", flexDirection: "row", marginLeft: "auto", marginRight: "auto", flexWrap: "wrap"}}>
         <CalcButton value="AC" bgColor="#ac3939" buttonWidth="160px" func={sayHi} />
         <CalcButton value="/" bgColor="#666666" func={sayHi} />

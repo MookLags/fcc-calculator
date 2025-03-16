@@ -1,40 +1,36 @@
-const Screen = ({ displayText, expressionText }) => {
+const Screen = ({ displayText = "0", expressionText = "" }) => {
+
+  console.log(displayText, expressionText);
 
   const screenStyle = {
-    display: "flex",
-    flexDirection: "column",
     width: "100%",
+    color: "white",
     backgroundColor: "black",
-    fontFamily: "digital"
+    overflow: "hidden",
+    fontFamily: "sans-serif"
   }
 
   const expressionDisplayStyle = {
-    display: "flex",
-    justifyContent: "flex-end",
-    textAlign: "right",
+    fontSize: "20px",
     color: "orange",
-    height: "20px",
-    lineHeight: "20x",
-    fontSize: "20px"
+    lineHeight: "20px",
+    textAlign: "right",
   }
 
   const displayStyle = {
-    display: "flex",
-    justifyContent: "flex-end",
-    textAlign: "right",
+    fontSize: "29px",
     color: "white",
-    height: "35px",
     lineHeight: "35px",
-    fontSize: "29px"
+    textAlign: "right",
   }
 
   return (
     <div id="screen" style={screenStyle}>
       <div id="expressionDisplay" style={expressionDisplayStyle}>
-        <p>{expressionText}</p>
+        <p style={{margin: "0"}}>{expressionText}</p>
       </div>
       <div id="display" style={displayStyle}>
-        <p>{displayText}</p>
+        <p style={{margin: "0"}}>{displayText}</p>
       </div>
     </div>
   )
