@@ -6,8 +6,9 @@ const HomePage = () => {
   const [decimalSet, setDecimalSet] = useState("");
   const [operatorSet, setOperatorSet] = useState(false);
   const [result, setResult] = useState("");
+
   return (
-    <div>
+    <div id="calculator">
       Home Page
       {/*
        THE PLAN
