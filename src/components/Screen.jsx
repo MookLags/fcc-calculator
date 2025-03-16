@@ -13,6 +13,8 @@ const Screen = ({ displayText, expressionText }) => {
     justifyContent: "flex-end",
     textAlign: "right",
     color: "orange",
+    height: "20px",
+    lineHeight: "20x",
     fontSize: "20px"
   }
 
@@ -21,6 +23,8 @@ const Screen = ({ displayText, expressionText }) => {
     justifyContent: "flex-end",
     textAlign: "right",
     color: "white",
+    height: "35px",
+    lineHeight: "35px",
     fontSize: "29px"
   }
 

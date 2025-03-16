@@ -12,12 +12,16 @@ const HomePage = () => {
   const calcStyle = {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     margin: "auto",
+    padding: "5px",
     marginTop: "100px",
-    width: "334px",
-    height: "394px",
+    width: "320px",
     backgroundColor: "black",
-    border: "2px solid #47476b"
+    border: "2px solid #47476b",
+    position: "relative",
+
   }
 
   const sayHi = () => { console.log("hi") };
@@ -25,11 +29,24 @@ const HomePage = () => {
   return (
     <div id="calculator" style={calcStyle}>
       <Screen />
-      <div id="buttonContainer" style={{ display: "flex", flexDirection: "row", gap: "1px", marginLeft: "auto", marginRight: "auto"}}>
+      <div id="buttonContainer" style={{ display: "flex", flexDirection: "row", marginLeft: "auto", marginRight: "auto", flexWrap: "wrap"}}>
+        <CalcButton value="AC" buttonWidth="160px" func={sayHi} />
+        <CalcButton value="/" func={sayHi} />
+        <CalcButton value="*" func={sayHi} />
+        <CalcButton value="7" func={sayHi} />
+        <CalcButton value="8" func={sayHi} />
+        <CalcButton value="9" func={sayHi} />
+        <CalcButton value="-" func={sayHi} />
+        <CalcButton value="4" func={sayHi} />
         <CalcButton value="5" func={sayHi} />
-        <CalcButton value="5" func={sayHi} />
-        <CalcButton value="5" func={sayHi} />
-        <CalcButton value="5" func={sayHi} />
+        <CalcButton value="6" func={sayHi} />
+        <CalcButton value="+" func={sayHi} />
+        <CalcButton value="1" func={sayHi} />
+        <CalcButton value="2" func={sayHi} />
+        <CalcButton value="3" func={sayHi} />
+        <CalcButton value="=" buttonHeight="130px" isRelative={false} func={sayHi} />
+        <CalcButton value="0" buttonWidth="160px" func={sayHi} />
+        <CalcButton value="." buttonWidth="79px" func={sayHi} />
       </div>
       {/*
        Functions: 
