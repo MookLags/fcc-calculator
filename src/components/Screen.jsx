@@ -29,8 +29,8 @@ console.log(displayText, expressionText);
       <div id="expressionDisplay" style={expressionDisplayStyle}>
         <p style={{margin: "0"}}>{expressionText}</p>
       </div>
-      <div id="display" style={displayStyle}>
-        <p style={{margin: "0"}}>{displayText}</p>
+      <div style={displayStyle}>
+        <p id="display" style={{margin: "0"}}>{displayText}</p>
       </div>
     </div>
   )
