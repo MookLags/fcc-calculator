@@ -1,6 +1,5 @@
 const Screen = ({ displayText = "0", expressionText = "" }) => {
-
-  console.log(displayText, expressionText);
+console.log(displayText, expressionText);
 
   const screenStyle = {
     width: "100%",
@@ -14,6 +13,7 @@ const Screen = ({ displayText = "0", expressionText = "" }) => {
     fontSize: "20px",
     color: "orange",
     lineHeight: "20px",
+    height: "20px",
     textAlign: "right",
   }
 
