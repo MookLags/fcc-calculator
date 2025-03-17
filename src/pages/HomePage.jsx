@@ -44,6 +44,8 @@ const HomePage = () => {
   const sayHi = () => { console.log("hi") };
   
   const handleNums = (num) => {
+    setExpression(prevEx => prevEx + operator) // need to add current operator state
+    setOperatorSet(false)
     if (currVal.toString().length == 12) {
       return;
     }
@@ -56,6 +58,7 @@ const HomePage = () => {
   }
 
   const handleDecimal = () => {
+    setOperatorSet(false);
     if (decimalSet) {
       return;
     }
