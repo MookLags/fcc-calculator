@@ -1,5 +1,4 @@
 const Screen = ({ displayText = "0", expressionText = "" }) => {
-console.log(displayText, expressionText);
 
   const screenStyle = {
     width: "100%",

@@ -2,19 +2,14 @@ import CalcButton from '../components/CalcButton';
 import Screen from '../components/Screen';
 import { useState, useEffect } from 'react';
 
-      {/*
-       Functions: 
-       handleEquals
-        if expression == null, "/", "*", "+", "-" and equals is pressed, result = NaN
-        if pressed, result = eval(expression), append `=${result}` to expressionDisplay, and setCurrVal(result)
-      */}
-
 const HomePage = () => {
   const [currVal, setCurrVal] = useState("0");
   const [expression, setExpression] = useState("");
   const [decimalSet, setDecimalSet] = useState("");
-  const [operator, setOperator] = useState("");
+  const [operator, setOperator] = useState([]);
+  const [operatorInUse, setOperatorInUse] = useState("");
   const [result, setResult] = useState("");
+  const [expressionComplete, setExpressionComplete] = useState(false);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#c3c3d6";
@@ -24,6 +19,11 @@ const HomePage = () => {
       document.body.margin = "";
     }
   }, []);
+
+
+  useEffect(() => {
+    console.log("Operator in use: " + operatorInUse);
+  }, [operatorInUse]);
 
   const calcStyle = {
     display: "flex",
@@ -40,29 +40,35 @@ const HomePage = () => {
 
   }
 
-  const sayHi = () => { console.log("hi") };
-  
   const handleNums = (num) => {
-    setOperator("");
+    if (expressionComplete) {
+      setOperator([]);
+      setOperatorInUse("");
+      setExpressionComplete(false);
+      setExpression("");
+      setCurrVal("");
+    }
+
+    setExpression(prevVal => prevVal + operatorInUse);
+    setOperator([]);
+    setOperatorInUse("");
     if (currVal.toString().length == 12) {
       return;
     }
-    
+
     let zeroPointRegex = /^0\.0*$/
 
-    if (currVal != 0 && operator == "" && currVal.toString().length <= 12 || zeroPointRegex.test(currVal)) {
+    if (currVal != 0 && currVal.toString().length <= 12 || zeroPointRegex.test(currVal)) {
       setCurrVal(prevVal => prevVal + num);
-      setExpression(prevEx => prevEx + operator) 
       setExpression(prevVal => prevVal + num);
     } else {
       setCurrVal(num);
       setExpression(prevVal => prevVal + num);
-      console.log(currVal);
     }
   }
 
   const handleDecimal = () => {
-    setOperator("");
+    setOperator([]);
     if (decimalSet) {
       return;
     }
@@ -70,20 +76,33 @@ const HomePage = () => {
     setExpression(prevVal => prevVal + ".");
     setDecimalSet(true);
   }
-
+     
   const handleOperators = (op) => {
-    if (!operator) {
-      setExpression(prevVal => prevVal + op);
-      setCurrVal(op)
-      setOperator(op)
-      setDecimalSet(false);
+    setDecimalSet(false);
+    if (expressionComplete) {
+      setExpression(result);
+      setExpressionComplete(false);
     }
+    setOperatorInUse("");
+    setCurrVal("");
+    setOperator(prevOp => {
+      const newOps = prevOp ? [...prevOp, op] : [op];
+      if (newOps.length > 1 && newOps[newOps.length - 1] === "-") {
+        setCurrVal(() => newOps[newOps.length - 2] + newOps[newOps.length - 1]);
+        setOperatorInUse(() => newOps[newOps.length - 2] + newOps[newOps.length - 1]);
+      } else {
+        setCurrVal(() => newOps[newOps.length - 1]);
+        setOperatorInUse(() => newOps[newOps.length - 1]);
+      }
+      return newOps;
+    });
   }
 
   const handleClear = () => {
     setCurrVal("0");
     setExpression("");
-    setOperator("");
+    setOperator([]);
+    setOperatorInUse("");
     setDecimalSet(false);
   }
 
@@ -93,6 +112,7 @@ const HomePage = () => {
     setCurrVal(expressionResult);
     setDecimalSet(false);
     setOperator("");
+    setExpressionComplete(true);
     setExpression(prevVal => prevVal + `=${expressionResult}`);
   }
 

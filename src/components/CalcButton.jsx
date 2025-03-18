@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CalcButton = ({ buttonWidth = "80px", buttonHeight = "65px", bgColor = "#4d4d4d", func, value, isRelative = true, name }) => {
+const CalcButton = ({ buttonWidth = "80px", buttonHeight = "65px", bgColor = "#4d4d4d", func, value, isRelative = true, name, isDisabled = false }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const calcButtonStyle = {
@@ -29,6 +29,7 @@ const CalcButton = ({ buttonWidth = "80px", buttonHeight = "65px", bgColor = "#4
       onClick={func}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      disabled={isDisabled}
     >
       {value}
     </button>
